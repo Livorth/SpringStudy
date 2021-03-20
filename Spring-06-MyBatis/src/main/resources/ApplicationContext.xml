@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--导入之前的Spring与Mybatis配置文件-->
+    <import resource="Spring-Dao.xml"/>
+
+<!--仅做一般遍历的注入-->
+
+    <bean id="userMapper" class="cn.livorth.Mapper.Impl.UserMapperImpl">
+        <property name="sqlSession" ref="sqlSession"/>
+    </bean>
+
+</beans>

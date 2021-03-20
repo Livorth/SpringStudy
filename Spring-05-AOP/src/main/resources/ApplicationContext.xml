@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+        <bean id="userService" class="cn.livorth.Service.UserServiceImpl"/>
+
+<!--方法一：通过 Spring API 实现-->
+<!--&lt;!&ndash;    给类注册bean&ndash;&gt;-->
+<!--    <bean id="beforeLog" class="cn.livorth.demo01.log.BeforeLog"/>-->
+<!--    <bean id="afterLog" class="cn.livorth.demo01.log.AfterLog"/>-->
+<!--&lt;!&ndash;    aop的配置&ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;切入点 expression:表达式匹配要执行的方法&ndash;&gt;-->
+<!--        <aop:pointcut id="pointCut" expression="execution(* cn.livorth.Service.UserServiceImpl.*(..))"/>-->
+<!--        &lt;!&ndash;执行环绕; advice-ref执行方法 . pointcut-ref切入点&ndash;&gt;-->
+<!--        <aop:advisor advice-ref="afterLog" pointcut-ref="pointCut"/>-->
+<!--        <aop:advisor advice-ref="beforeLog" pointcut-ref="pointCut"/>-->
+<!--    </aop:config>-->
+
+<!--方法二：自定义类来实现Aop-->
+<!--&lt;!&ndash;    注册bean&ndash;&gt;-->
+<!--    <bean id="diy" class="cn.livorth.demo02.MyPointCut"/>-->
+
+<!--    &lt;!&ndash;aop的配置&ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;第二种方式：使用AOP的标签实现&ndash;&gt;-->
+<!--        <aop:aspect ref="diy">-->
+<!--            <aop:pointcut id="myPointCut" expression="execution(* cn.livorth.Service.UserServiceImpl.*(..))"/>-->
+<!--            <aop:before pointcut-ref="myPointCut" method="before"/>-->
+<!--            <aop:after pointcut-ref="myPointCut" method="after"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+<!--第三种方式:注解实现-->
+    <bean id="annotationPointcut" class="cn.livorth.Demo03.AnnotationPointcut"/>
+    <aop:aspectj-autoproxy/>
+
+</beans>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userDaoImpl" class="cn.livorth.Dao.UserDaoImpl"/>
+    <bean id="userSQLDAOImpl" class="cn.livorth.Dao.UserSQLDaoImpl"/>
+
+    <bean id="userService" class="cn.livorth.Service.UserServiceImpl">
+<!--    ref应用容器中创建好的对象-->
+        <property name="userDao" ref="userDaoImpl"/>
+    </bean>
+
+</beans>

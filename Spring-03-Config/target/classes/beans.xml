@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--一个用于测试的类-->
+    <bean id="testClass" class="cn.livorth.pojo.TestClass">
+        <property name="str" value="TestClass"/>
+    </bean>
+
+<!--User类，有着常用类型的注入-->
+    <bean id="user" class="cn.livorth.pojo.User">
+<!--    普通类型的注入-->
+        <property name="str" value="String类型"/>
+
+<!--    数组类型的注入-->
+        <property name="strings" >
+            <array>
+                <value>String01</value>
+                <value>String02</value>
+                <value>String03</value>
+            </array>
+        </property>
+
+<!--    list类型的注入-->
+        <property name="listStr">
+            <list>
+                <value>ListString01</value>
+                <value>ListString02</value>
+                <value>ListString03</value>
+            </list>
+        </property>
+
+<!--    set类型的注入-->
+        <property name="setStr">
+            <set>
+                <value>SetString01</value>
+                <value>SetString02</value>
+                <value>SetString03</value>
+            </set>
+        </property>
+
+<!--    map类型的注入-->
+        <property name="mapStr">
+            <map>
+                <entry key="MapKey01" value="MapValue01"/>
+                <entry key="MapKey02" value="MapValue02"/>
+                <entry key="MapKey03" value="MapValue03"/>
+            </map>
+        </property>
+
+<!--    普通类的注入-->
+        <property name="testClass" ref="testClass"/>
+
+<!--    空值的注入-->
+        <property name="theNull" >
+            <null/>
+        </property>
+
+<!--    Properties的注入-->
+        <property name="info">
+            <props>
+                <prop key="driver">你的数据库包的地址</prop>
+                <prop key="url">你的数据库url</prop>
+            </props>
+        </property>
+    </bean>
+
+<!--采用c命名空间注入,调用的是带参数构造器-->
+    <bean id="TestPorC01" class="cn.livorth.pojo.TestPorC" c:name="name" c:age="22"/>
+<!--采用p命名空间注入,是直接注入-->
+    <bean id="TestPorC02" class="cn.livorth.pojo.TestPorC" p:name="name" p:age="22"/>
+
+</beans>

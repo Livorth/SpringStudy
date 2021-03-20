@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--对hello进行一个配置，由spring对Hello类进行一个实现，以及值的注入-->
+    <bean id="hello" class="cn.livorth.Pojo.Hello">
+        <property name="name" value="spring"/>
+    </bean>
+
+</beans>
